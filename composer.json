@@ -1,0 +1,15 @@
+{
+    "name": "gigac/grades",
+    "description": "Responsible system for the managing the students grades",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Argir Popov",
+            "email": "argirco.popov@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*",
+        "slim/psr7": "^1.0"
+    }
+}
