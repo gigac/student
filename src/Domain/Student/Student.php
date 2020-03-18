@@ -4,6 +4,7 @@ namespace App\Domain\Student;
 
 use Exception;
 use App\Domain\SchoolBoard\Type as SchoolBoard;
+use App\Statistics\Student\Concerns\CalculatorResolver;
 
 /**
  * Class Student
@@ -12,6 +13,8 @@ use App\Domain\SchoolBoard\Type as SchoolBoard;
  */
 class Student
 {
+
+    use CalculatorResolver;
 
     /**
      * @var int
@@ -131,5 +134,13 @@ class Student
             $average,
             2
         );
+    }
+
+    /**
+     * @return bool
+     */
+    public function passed()
+    {
+        return $this->calculator->pass($this);
     }
 }
