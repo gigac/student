@@ -1,15 +1,26 @@
 {
-    "name": "gigac/grades",
-    "description": "Responsible system for the managing the students grades",
-    "type": "project",
-    "authors": [
-        {
-            "name": "Argir Popov",
-            "email": "argirco.popov@gmail.com"
-        }
-    ],
-    "require": {
-        "slim/slim": "4.*",
-        "slim/psr7": "^1.0"
+  "name": "gigac/grades",
+  "description": "Responsible system for the managing the students grades",
+  "type": "project",
+  "authors": [
+    {
+      "name": "Argir Popov",
+      "email": "argirco.popov@gmail.com"
     }
+  ],
+  "require": {
+    "slim/slim": "4.*",
+    "slim/psr7": "^1.0",
+    "myclabs/php-enum": "^1.7",
+    "ramsey/uuid": "^3.9",
+    "ext-json": "*",
+    "php-di/slim-bridge": "^3.0",
+    "ext-simplexml": "*",
+    "spatie/array-to-xml": "^2.11"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  }
 }
