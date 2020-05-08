@@ -1,23 +1,21 @@
-## Student case
+# Student case
 
 
 I used  slim php framework so I can have some base setup for containers and routing.
 
 ---
-In order to run the app, clone the repo, `cd public` and `php -S localhost:8888`
-
+In order to run the app
+1. Clone the repo
+2. composer install
+3. `cd public && php -S localhost:8888`
 ---
 
-I have to mention that I didnt quite understand the "CSMB" way of how it determinated if student pass or not.
+### Endpoints
+`http://localhost:8888/students/:id`
 
-I mean on this part `"CSMB discards the lowest grade, if you have more than 2 grades, and considers pass if
-                     his biggest grade is bigger than 8"`
-                     
-So I made it my way 😅
+By default the app uses `MemoryStudentRepository`.  
+To change to `MysqlStudentRepository` comment out `line 23` in `public/index.php` and uncomment `line 24`.  
 
----
-I didnt implement any databases, but instead used the repository pattern and implement Memory repository.
-
-You can check `public/index.php` for how the repository is implemented.
-
-I took me 5-6 hours. I am sorry I delayed this a bit, but I was quite busy latly.
+**mysql db name**: students_db  
+**mysql config** `config/local.php`  
+**dummy data** in `seeds/students_db.sql`
