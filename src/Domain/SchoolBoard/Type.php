@@ -26,11 +26,11 @@ class Type extends Enum
         switch ($this->getValue())
         {
             case static::CSMB:
-                return 'json';
+                return 'xml';
 
             case static::CSM:
             default:
-                return 'xml';
+                return 'json';
         }
     }
 }
