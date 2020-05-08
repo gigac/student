@@ -6,7 +6,7 @@ namespace App\Domain\Student;
 /**
  * Interface Repository
  *
- * @package App\Domain\Student\
+ * @package App\Domain\Student
  */
 interface Repository
 {
@@ -19,7 +19,7 @@ interface Repository
     /**
      * @param  int $id
      *
-     * @return Student|null
+     * @return Student
      */
-    public function getById(int $id): ?Student;
+    public function getById(int $id): Student;
 }
