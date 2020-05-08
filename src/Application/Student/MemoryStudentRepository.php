@@ -4,6 +4,7 @@ namespace App\Application\Student;
 
 use App\Domain\Student\Student;
 use App\Domain\SchoolBoard\Type as SchoolBoard;
+use App\Domain\Student\StudentNotFoundException;
 use App\Domain\Student\Repository as StudentRepository;
 
 /**
@@ -32,7 +33,7 @@ class MemoryStudentRepository implements StudentRepository
     /**
      * @inheritDoc
      */
-    public function getById(int $id): ?Student
+    public function getById(int $id): Student
     {
         $found = array_filter(
             $this->get(),
@@ -43,7 +44,7 @@ class MemoryStudentRepository implements StudentRepository
 
         if (empty($found))
         {
-            return null;
+            throw new StudentNotFoundException('Student not found.');
         }
 
         return reset($found);
