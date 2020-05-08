@@ -34,11 +34,13 @@ $app->get('/students/{id}', function (Request $request, Response $response, $arg
 
     $e = ExportResolver::makeExporter($student);
 
-    $response->getBody()->write(
-        $e->export()
-    );
+    $contentType = $e instanceof XmlHandler ? 'application/xml' : 'application/json';
+    $response->getBody()
+             ->write(
+                 $e->export()
+             );
 
-    return $response;
+    return $response->withHeader('Content-type', $contentType);
 });
 
 $app->run();
