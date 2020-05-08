@@ -17,15 +17,8 @@ class CsmbCalculator implements PassCalculatorInterface
      */
     public function pass(Student $student): bool
     {
-        $pass = $student->getAverageGrade() > 7;
+        $studentGrades = $student->getGrades();
 
-        if ($pass && count($student->getGrades()) > 2)
-        {
-            $max = max($student->getGrades());
-
-            return $max >= 8;
-        }
-
-        return $pass;
+        return count($studentGrades) > 2 && max($student->getGrades()) > 8;
     }
 }

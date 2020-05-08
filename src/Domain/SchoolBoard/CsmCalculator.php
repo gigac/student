@@ -17,6 +17,6 @@ class CsmCalculator implements PassCalculatorInterface
      */
     public function pass(Student $student): bool
     {
-        return $student->getAverageGrade() > 7;
+        return $student->getAverageGrade() >= 7;
     }
 }
