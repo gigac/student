@@ -2,7 +2,7 @@
 
 namespace App\Statistics\Student\Handlers;
 
-use Spatie\ArrayToXml\ArrayToXml;
+use SimpleXMLElement;
 use App\Statistics\Student\Exporter;
 
 /**
@@ -14,21 +14,42 @@ class XmlHandler extends Exporter
 {
 
     /**
+     * @param  array $data
+     *
+     * @return SimpleXMLElement
+     */
+    private function makeXml($data): SimpleXMLElement
+    {
+        $xml = new SimpleXMLElement('<xml/>');
+
+        foreach ($data as $key => $value)
+        {
+            if ( ! is_array($value))
+            {
+                $xml->addChild($key, $value);
+                continue;
+            }
+
+            // Assuming grades indxed array
+            $keyChild = $xml->addChild($key);
+            foreach ($value as $item)
+            {
+                $keyChild->addChild('value', $item);
+            }
+        }
+
+        return $xml;
+    }
+
+    /**
      * @inheritDoc
      */
     public function export()
     {
         $data = $this->toArray();
 
-        $grades = array_map(function ($item) {
-            return ['value' => $item];
-        }, $data['grades']);
+        $xml = $this->makeXml($data);
 
-        $data['results'] = [
-            'pass'   => $data['final_result'],
-            'grades' => $grades,
-        ];
-
-        return ArrayToXml::convert($data, 'Student', true, null, '1.0', ['formatOutput' => true]);
+        return $xml->asXML();
     }
 }

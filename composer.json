@@ -16,7 +16,8 @@
     "ext-json": "*",
     "php-di/slim-bridge": "^3.0",
     "ext-simplexml": "*",
-    "spatie/array-to-xml": "^2.11"
+    "ext-dom": "*",
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {
